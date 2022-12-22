@@ -1,0 +1,80 @@
+.calculator-header {
+    text-align: center;
+    padding: 10px;
+    background-color: #101010;
+    border-radius: 10px;
+    margin: 10px 0;
+    outline: 1px solid gray;
+}
+
+.spec-selection-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: min-content 100px;
+    gap: 10px;
+}
+
+.spec-selection-row {
+    grid-column: span 2;
+    display: flex;
+    justify-content: space-around;
+    border: 1px solid gray;
+    border-radius: 10px;
+    background-color: #101010;
+}
+
+.spec-button {
+    font-size: 16px;
+    background-color: #202020;
+    color: white;
+    border: none;
+    outline: 1px solid gray;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 130px;
+    margin: 10px 5px;
+}
+
+.spec-button:hover {
+    background-color: #404040;
+}
+
+.spec-button:active {
+    background-color: #353535;
+}
+
+.selected {
+    outline: 2px solid gold;
+}
+
+.spec-description-box {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    border: 1px solid gray;
+    padding: 20px;
+    background-color: #101010;
+}
+
+.spec-passive-container {
+    border: 1px solid gray;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    text-align: center;
+    background-color: #101010;
+}
+
+.spec-passive {
+    list-style:inside;
+}

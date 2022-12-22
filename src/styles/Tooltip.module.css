@@ -1,0 +1,20 @@
+.tooltip {
+    width: 110%;
+    height: 210%;
+    bottom: -55%;
+    left: -5%;
+    text-align: center;
+    position: absolute;
+    outline: 1px solid gray;
+    border-radius: 10px;
+    background-color: #202020;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    z-index: 5;
+}
+
+.selected {
+    outline: 2px solid gold;
+}
