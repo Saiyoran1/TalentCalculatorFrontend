@@ -2,6 +2,7 @@ import {useState, useEffect} from 'react';
 import {fetchAncientSpecs, fetchDataForSpec} from './AncientDataFetching.js';
 import AncientTalentRow from './AncientTalentRow.js';
 import SpecSelection from '../Generic/SpecSelection';
+import calculatorStyles from '../styles/Calculator.module.css';
 import ancientStyles from '../styles/AncientCalculator.module.css';
 import specStyles from '../styles/SpecSelection.module.css';
 
@@ -143,6 +144,7 @@ function AncientCalculator({setAttributes}) {
         return talentRows;
     }
 
+    //Update build after selecting a new talent.
     const handleTalentUpdate = (baseID, selection) => {
         const newBuild = {...build};
         const changedRow = newBuild.talentRows.find(row => row.base.id === baseID);
@@ -158,8 +160,8 @@ function AncientCalculator({setAttributes}) {
     }
 
     return (
-        <div className={ancientStyles["ancient-calculator"]}>
-            <h2 className={specStyles["calculator-header"]}>Select an Ancient Specialization:</h2>
+        <div className={calculatorStyles.calculator}>
+            <h2 className={calculatorStyles["calculator-header"]}>Select an Ancient Specialization:</h2>
             <SpecSelection specs={specs} selectSpec={handleUpdateSpec} selectedSpec={build ? build.spec : null} passives={build ? build.passives : []}/>
             <div className={ancientStyles["talent-box"]}>
                 {build && build.talentRows.map(row => <AncientTalentRow key={row.base.id} row={row} onSelectionChanged={(selection) => handleTalentUpdate(row.base.id, selection)}/>)}

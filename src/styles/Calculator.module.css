@@ -1,0 +1,18 @@
+.calculator {
+    background-color: #101010;
+    color: white;
+    width: 100%;
+    height: 100%;
+    padding: 0 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.calculator-header {
+    text-align: center;
+    padding: 10px;
+    background-color: #101010;
+    border-radius: 10px;
+    margin: 10px 0;
+    outline: 1px solid gray;
+}

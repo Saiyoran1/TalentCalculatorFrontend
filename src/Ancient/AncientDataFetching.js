@@ -10,7 +10,7 @@ export function fetchAncientSpecs(cb) {
 }
 
 export function fetchModernSpecs(cb) {
-    fetch("http://localhost:5000/specs?plane=ancient").then(response => response.json()).then(data => {
+    fetch("http://localhost:5000/specs?plane=modern").then(response => response.json()).then(data => {
         //This just returns an array of spec objects with the id, name, and description.
         cb(data);
     })

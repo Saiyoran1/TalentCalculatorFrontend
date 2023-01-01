@@ -1,5 +1,6 @@
 import Analyzer from './Analyzer/Analyzer.js';
 import AncientCalculator from './Ancient/AncientCalculator.js';
+import ModernCalculator from './Modern/ModernCalculator.js';
 import styles from './styles/App.module.css';
 import {useState} from 'react';
 
@@ -23,7 +24,7 @@ function App() {
   return (
     <div className={styles.app}>
         <AncientCalculator setAttributes={setAncientAttributes}/>
-        <AncientCalculator setAttributes={setModernAttributes}/>
+        <ModernCalculator setAttributes={setModernAttributes}/>
         <Analyzer attributes={getTotalAttributes()}/>
     </div>
   );
