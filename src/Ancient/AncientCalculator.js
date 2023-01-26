@@ -4,7 +4,6 @@ import AncientTalentRow from './AncientTalentRow.js';
 import SpecSelection from '../Generic/SpecSelection';
 import calculatorStyles from '../styles/Calculator.module.css';
 import ancientStyles from '../styles/AncientCalculator.module.css';
-import specStyles from '../styles/SpecSelection.module.css';
 
 /*
     Build shape

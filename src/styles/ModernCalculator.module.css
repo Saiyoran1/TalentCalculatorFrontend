@@ -1,0 +1,28 @@
+.talent-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-bottom: 10px;
+}
+
+.talent-row {
+    display: flex;
+    background-color: #101010;
+    justify-content: space-evenly;
+    border: 1px solid gray;
+    border-radius: 10px;
+}
+
+.talent-button {
+    min-height: 70px;
+    flex: 1;
+    margin: 10px;
+    background-color: #202020;
+    color: white;
+    border: none;
+    outline: 1px solid gray;
+    border-radius: 10px;
+    cursor: pointer;
+    justify-self: center;
+    position: relative;
+}

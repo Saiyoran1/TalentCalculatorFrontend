@@ -43,7 +43,6 @@ export function fetchDataForSpec(specID, cb) {
     } else {
         //This should fetch all abilities and passives for a spec. Shape should be { abilities: [], passives: [] }
         fetch(`http://localhost:5000/spec/${specID}`).then(response => response.json()).then(data => {
-            console.log(data);
             specData.set(specID, data);
             cb(data);
         });
