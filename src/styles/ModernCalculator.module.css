@@ -1,3 +1,20 @@
+.ability-pool-box {
+    display: flex;
+    border: 1px solid white;
+    border-radius: 10px;
+    height: 100%;
+    margin-bottom: 30px;
+}
+
+.spec-select-column {
+    background-color: #202020;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
 .talent-box {
     display: flex;
     flex-direction: column;

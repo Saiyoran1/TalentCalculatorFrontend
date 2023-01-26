@@ -2,6 +2,7 @@ import {useState} from 'react';
 import { fetchDataForSpec } from '../Ancient/AncientDataFetching';
 import SpecSelectButton from '../Generic/SpecSelectButton';
 import ModernActionSlot from './ModernActionSlot';
+import styles from '../styles/ModernCalculator.module.css';
 
 function ModernAbilityPool({specs, selected}) {
     const [selectedSpec, setSelectedSpec] = useState(specs[0]);
@@ -17,8 +18,8 @@ function ModernAbilityPool({specs, selected}) {
     }
 
     return (
-        <div>
-            <div>
+        <div className={styles["ability-pool-box"]}>
+            <div className={styles["spec-select-column"]}>
                 {specs && specs.map(spec => <SpecSelectButton spec={spec} onClick={handleSpecUpdate} selected={selectedSpec && selectedSpec.id === spec.id}/>)}
             </div>
             <div>
