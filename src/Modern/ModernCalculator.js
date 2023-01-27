@@ -2,10 +2,10 @@ import calculatorStyles from '../styles/Calculator.module.css';
 import SpecSelection from '../Generic/SpecSelection';
 import ModernActionSlot from './ModernActionSlot';
 import styles from '../styles/ModernCalculator.module.css';
-import { fetchDataForSpec } from '../Ancient/FrontEndDataFetching';
+import { fetchDataForSpec } from '../Generic/FrontEndDataFetching';
 import ModernAbilityPool from './ModernAbilityPool';
 
-function ModernCalculator({specs, build, setBuild}) {
+function ModernCalculator({ specs, build, setBuild }) {
 
     const handleUpdateSpec = (newSpec) => {
         if (build && build.spec.id === newSpec.id) {
@@ -20,7 +20,7 @@ function ModernCalculator({specs, build, setBuild}) {
             return;
         }
         const newBuild = {
-            spec: {...spec},
+            spec: { ...spec },
             weapon: {},
             abilities: {
                 locked: abilityData.abilities.filter(ability => ability.lockedToSpec),
@@ -34,20 +34,18 @@ function ModernCalculator({specs, build, setBuild}) {
     return (
         <div className={calculatorStyles.calculator}>
             <h2 className={calculatorStyles["calculator-header"]}>Select a Modern Specialization:</h2>
-            <SpecSelection specs={specs} selectSpec={handleUpdateSpec} selectedSpec={build ? build.spec : null} passives={build ? build.passives : []}/>
+            <SpecSelection specs={specs} selectSpec={handleUpdateSpec} selectedSpec={build ? build.spec : null} passives={build ? build.passives : []} />
             {build && <div className={styles["talent-box"]}>
-                <div className={styles["talent-row"]}>
-                    <ModernActionSlot ability={build.weapon}/>
-                    <ModernActionSlot ability={build.abilities.locked[0]}/>
-                    <ModernActionSlot ability={build.abilities.locked[1]}/>
+                <div className={styles["build-box"]}>
+                    <ModernActionSlot ability={build.weapon} />
+                    <ModernActionSlot ability={build.abilities.locked[0]} />
+                    <ModernActionSlot ability={build.abilities.locked[1]} />
+                    <ModernActionSlot ability={build.abilities.free[0]} />
+                    <ModernActionSlot ability={build.abilities.free[1]} />
+                    <ModernActionSlot ability={build.abilities.free[2]} />
                 </div>
-                <div className={styles["talent-row"]}>
-                    <ModernActionSlot ability={build.abilities.free[0]}/>
-                    <ModernActionSlot ability={build.abilities.free[1]}/>
-                    <ModernActionSlot ability={build.abilities.free[2]}/>
-                </div>
+                <ModernAbilityPool specs={specs} />
             </div>}
-            {build && <ModernAbilityPool specs={specs}/>}
         </div>
     )
 }

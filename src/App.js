@@ -3,7 +3,7 @@ import AncientCalculator from './Ancient/AncientCalculator.js';
 import ModernCalculator from './Modern/ModernCalculator.js';
 import styles from './styles/App.module.css';
 import { useEffect, useState } from 'react';
-import { fetchSpecs } from './Ancient/FrontEndDataFetching.js';
+import { fetchSpecs } from './Generic/FrontEndDataFetching.js';
 
 function App() {
 

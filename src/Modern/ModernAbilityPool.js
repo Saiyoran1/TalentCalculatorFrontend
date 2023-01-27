@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import { fetchDataForSpec } from '../Ancient/FrontEndDataFetching';
+import { fetchDataForSpec } from '../Generic/FrontEndDataFetching';
 import SpecSelectButton from '../Generic/SpecSelectButton';
 import ModernActionSlot from './ModernActionSlot';
 import styles from '../styles/ModernCalculator.module.css';

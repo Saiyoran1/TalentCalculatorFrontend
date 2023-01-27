@@ -2,8 +2,8 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
-    margin-bottom: 10px;
+    justify-content: space-between;
+    margin: 10px 0;
 }
 
 .talent-row {
@@ -15,8 +15,8 @@
 }
 
 .talent-button {
-    min-height: 70px;
-    flex: 1;
+    height: 70px;
+    width: 210px;
     margin: 10px;
     background-color: #202020;
     color: white;
@@ -35,8 +35,6 @@
 .talent-description {
     grid-column: span 3;
     height: 100%;
-    text-align: center;
-    padding: 10px;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     background-color: #202020;

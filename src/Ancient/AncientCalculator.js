@@ -2,7 +2,7 @@ import AncientTalentRow from './AncientTalentRow.js';
 import SpecSelection from '../Generic/SpecSelection';
 import calculatorStyles from '../styles/Calculator.module.css';
 import ancientStyles from '../styles/AncientCalculator.module.css';
-import {fetchDataForSpec} from './FrontEndDataFetching';
+import {fetchDataForSpec} from '../Generic/FrontEndDataFetching';
 
 function AncientCalculator({specs, build, setBuild}) {
 

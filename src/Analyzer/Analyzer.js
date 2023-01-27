@@ -1,5 +1,5 @@
 import AttributeDisplay from './AttributeDisplay.js';
-import './Analyzer.css';
+import styles from '../styles/Analyzer.module.css';
 
 function Analyzer({ modernBuild, ancientBuild }) {
 
@@ -46,7 +46,7 @@ function Analyzer({ modernBuild, ancientBuild }) {
     });
 
     return (
-        <div className="analyzer">
+        <div className={styles.analyzer}>
             {Object.keys(attributes).map(attribute => {
                 return <AttributeDisplay key={attribute} name={attribute} value={attributes[attribute]} />
             })}

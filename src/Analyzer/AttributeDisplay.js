@@ -1,5 +1,5 @@
 import ProgressBar from './ProgressBar.js';
-import './AttributeDisplay.css';
+import styles from '../styles/Analyzer.module.css';
 
 function AttributeDisplay(props) {
     const {name, value} = props;
@@ -15,7 +15,7 @@ function AttributeDisplay(props) {
     }
 
     return (
-        <div className="attribute-display">
+        <div className={styles["attribute-display"]}>
             {formattedString}
             <ProgressBar percentage={(value / 60) * 100} />
         </div>

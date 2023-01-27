@@ -43,7 +43,6 @@
 }
 
 .spec-description-box {
-    text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -51,6 +50,7 @@
     border: 1px solid gray;
     padding: 20px;
     background-color: #101010;
+    font-size: 14px;
 }
 
 .spec-passive-container {
@@ -62,8 +62,8 @@
     align-items: center;
     justify-content: center;
     padding: 10px;
-    text-align: center;
     background-color: #101010;
+    font-size: 14px;
 }
 
 .spec-passive {
