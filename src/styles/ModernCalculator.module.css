@@ -1,6 +1,6 @@
 .ability-pool-box {
     display: flex;
-    border: 1px solid white;
+    border: 1px solid gray;
     border-radius: 10px;
     height: 100%;
     margin-bottom: 30px;

@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import { fetchDataForSpec } from '../Ancient/AncientDataFetching';
+import { fetchDataForSpec } from '../Ancient/FrontEndDataFetching';
 import SpecSelectButton from '../Generic/SpecSelectButton';
 import ModernActionSlot from './ModernActionSlot';
 import styles from '../styles/ModernCalculator.module.css';
@@ -12,7 +12,6 @@ function ModernAbilityPool({specs, selected}) {
             return;
         }
         fetchDataForSpec(newSpec.id, (abilityData) => {
-            console.log(abilityData);
             setSelectedSpec({...newSpec, abilities: abilityData.abilities});
         });
     }
@@ -20,11 +19,11 @@ function ModernAbilityPool({specs, selected}) {
     return (
         <div className={styles["ability-pool-box"]}>
             <div className={styles["spec-select-column"]}>
-                {specs && specs.map(spec => <SpecSelectButton spec={spec} onClick={handleSpecUpdate} selected={selectedSpec && selectedSpec.id === spec.id}/>)}
+                {specs && specs.map(spec => <SpecSelectButton key={spec.id} spec={spec} onClick={handleSpecUpdate} selected={selectedSpec && selectedSpec.id === spec.id}/>)}
             </div>
             <div>
             {/*Need to filter abilities, but I think the lockedToSpec property is not correctly being evaluated as a bool.*/}
-                {selectedSpec && selectedSpec.abilities && selectedSpec.abilities.map(ability => <ModernActionSlot ability={ability}/>)}
+                {selectedSpec && selectedSpec.abilities && selectedSpec.abilities.map(ability => <ModernActionSlot ability={ability} key={ability.id}/>)}
             </div>
         </div>
     )

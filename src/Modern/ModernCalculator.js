@@ -1,19 +1,11 @@
-import {useEffect, useState} from 'react';
 import calculatorStyles from '../styles/Calculator.module.css';
 import SpecSelection from '../Generic/SpecSelection';
 import ModernActionSlot from './ModernActionSlot';
 import styles from '../styles/ModernCalculator.module.css';
-import { fetchModernSpecs, fetchDataForSpec } from '../Ancient/AncientDataFetching';
+import { fetchDataForSpec } from '../Ancient/FrontEndDataFetching';
 import ModernAbilityPool from './ModernAbilityPool';
 
-function ModernCalculator({setAttributes}) {
-
-    const [specs, setSpecs] = useState([]);
-    const [build, setBuild] = useState(null);
-
-    useEffect(() => {
-        fetchModernSpecs((newSpecs) => setSpecs(newSpecs));
-    }, []);
+function ModernCalculator({specs, build, setBuild}) {
 
     const handleUpdateSpec = (newSpec) => {
         if (build && build.spec.id === newSpec.id) {
@@ -23,13 +15,13 @@ function ModernCalculator({setAttributes}) {
     }
 
     const changeSpec = (spec, abilityData) => {
-        console.log(abilityData);
         if (!spec || !abilityData) {
             setBuild(null);
             return;
         }
         const newBuild = {
             spec: {...spec},
+            weapon: {},
             abilities: {
                 locked: abilityData.abilities.filter(ability => ability.lockedToSpec),
                 free: []

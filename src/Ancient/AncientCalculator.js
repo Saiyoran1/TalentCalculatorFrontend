@@ -1,107 +1,10 @@
-import {useState, useEffect} from 'react';
-import {fetchAncientSpecs, fetchDataForSpec} from './AncientDataFetching.js';
 import AncientTalentRow from './AncientTalentRow.js';
 import SpecSelection from '../Generic/SpecSelection';
 import calculatorStyles from '../styles/Calculator.module.css';
 import ancientStyles from '../styles/AncientCalculator.module.css';
+import {fetchDataForSpec} from './FrontEndDataFetching';
 
-/*
-    Build shape
-    {
-        spec: {
-            id: number,
-            name: string,
-            description: string
-        },
-        talentRows: [
-            {
-                base: {
-                    id: number,
-                    name: string,
-                    specID: number,
-                    attributes: [
-                        {
-                            name: string,
-                            value: number
-                        }
-                    ]
-                },
-                talents: [
-                    {
-                        id: number,
-                        name: string,
-                        specID: number,
-                        baseID: number,
-                        attributes: [
-                            {
-                                name: string,
-                                value: number
-                            }
-                        ]
-                    }
-                ],
-                selection: number
-            }
-        ],
-        passives: [
-            {
-                id: number,
-                specID: number,
-                name: string,
-                description: string,
-                attributes: [
-                    name: string,
-                    value: number
-                ]
-            }
-        ]
-    }
-*/
-
-function AncientCalculator({setAttributes}) {
-
-    const [specs, setSpecs] = useState([]);
-    const [build, setBuild] = useState(null);
-
-    //On initial render, fetch all spec data for ancient specs.
-    useEffect(() => {
-        fetchAncientSpecs((ancientSpecs) => {
-            setSpecs(ancientSpecs);
-        });
-    }, []);
-
-    //When build has changed, update attributes for the analyzer.
-    useEffect(() => {
-        if (!build) {
-            setAttributes({});
-            return;
-        }
-        const attributes = {};
-        build.talentRows.forEach(talentRow => {
-            const ability = talentRow.selection === -1 ? talentRow.base : talentRow.talents[talentRow.selection];
-            if (ability && ability.attributes) {
-                ability.attributes.forEach(attribute => {
-                    if (attributes[attribute.name]) {
-                        attributes[attribute.name] += attribute.value;
-                    } else {
-                        attributes[attribute.name] = attribute.value;
-                    }
-                });
-            }
-        });
-        build.passives.forEach(passive => {
-            if (passive.attributes) {
-                passive.attributes.forEach(attribute => {
-                    if (attributes[attribute.name]) {
-                        attributes[attribute.name] += attribute.value;
-                    } else {
-                        attributes[attribute.name] = attribute.value;
-                    }
-                });
-            }
-        });
-        setAttributes(attributes);
-    }, [build, setAttributes]);
+function AncientCalculator({specs, build, setBuild}) {
 
     //Change specs when clicking new spec button.
     const handleUpdateSpec = (newSpec) => {
