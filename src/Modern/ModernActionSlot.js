@@ -1,10 +1,10 @@
 import styles from '../styles/ModernCalculator.module.css';
 
-function ModernActionSlot ({ability}) {
+function ModernActionSlot ({ability, onClick, selected}) {
     return (
-    <div className={styles["talent-button"]}>
+    <button onClick={onClick} className={`${styles["talent-button"]} ${selected ? styles.selected : ""}`}>
         {ability ? ability.name : ""}
-    </div>);
+    </button>);
 }
 
 export default ModernActionSlot;

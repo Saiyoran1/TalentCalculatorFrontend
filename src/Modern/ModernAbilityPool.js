@@ -4,7 +4,7 @@ import SpecSelectButton from '../Generic/SpecSelectButton';
 import ModernActionSlot from './ModernActionSlot';
 import styles from '../styles/ModernCalculator.module.css';
 
-function ModernAbilityPool({specs, selected}) {
+function ModernAbilityPool({specs, selectedAbilities, selectAbility}) {
     const [selectedSpec, setSelectedSpec] = useState(specs[0]);
 
     const handleSpecUpdate = (newSpec) => {
@@ -16,6 +16,8 @@ function ModernAbilityPool({specs, selected}) {
         });
     }
 
+    const abilityIDs = selectedAbilities.map(ability => ability.id);
+
     return (
         <div className={styles["ability-pool-box"]}>
             <div className={styles["spec-select-column"]}>
@@ -23,7 +25,9 @@ function ModernAbilityPool({specs, selected}) {
             </div>
             <div>
             {/*Need to filter abilities, but I think the lockedToSpec property is not correctly being evaluated as a bool.*/}
-                {selectedSpec && selectedSpec.abilities && selectedSpec.abilities.map(ability => <ModernActionSlot ability={ability} key={ability.id}/>)}
+                {selectedSpec && selectedSpec.abilities && 
+                selectedSpec.abilities.filter(ability => ability.lockedToSpec === "FALSE")
+                .map(ability => <ModernActionSlot selected={abilityIDs.includes(ability.id)} ability={ability} key={ability.id} onClick={() => selectAbility(ability)}/>)}
             </div>
         </div>
     )

@@ -12,7 +12,7 @@ function App() {
     weapon: {},
     abilities: {
       locked: [],
-      free: []
+      free: new Map()
     },
     passives: []
   });
@@ -58,7 +58,7 @@ Modern Build Shape
   weapon: abilityObject,
   abilities: { 
     locked: [abilityObject], 
-    free: [abilityObject]
+    free: Map(number, abilityObject)
   },
   passives: [passiveObject]
 }

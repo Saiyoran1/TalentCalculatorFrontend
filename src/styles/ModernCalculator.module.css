@@ -51,3 +51,15 @@
     justify-self: center;
     position: relative;
 }
+
+.talent-button:hover {
+    background-color: #404040;
+}
+
+.talent-button:active {
+    background-color: #353535;
+}
+
+.selected {
+    outline: 2px solid gold;
+}
