@@ -1,4 +1,4 @@
-import styles from '../styles/Tooltip.module.css';
+import styles from '../styles/ActionSlot.module.css';
 
 const AbilityTooltip = ({ability, selected}) => {
     return (

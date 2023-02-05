@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import { fetchDataForSpec } from '../Generic/FrontEndDataFetching';
 import SpecSelectButton from '../Generic/SpecSelectButton';
-import ModernActionSlot from './ModernActionSlot';
+import ActionSlot from '../Generic/ActionSlot';
 import styles from '../styles/ModernCalculator.module.css';
 
 function ModernAbilityPool({specs, selectedAbilities, selectAbility}) {
@@ -24,10 +24,9 @@ function ModernAbilityPool({specs, selectedAbilities, selectAbility}) {
                 {specs && specs.map(spec => <SpecSelectButton key={spec.id} spec={spec} onClick={handleSpecUpdate} selected={selectedSpec && selectedSpec.id === spec.id}/>)}
             </div>
             <div>
-            {/*Need to filter abilities, but I think the lockedToSpec property is not correctly being evaluated as a bool.*/}
                 {selectedSpec && selectedSpec.abilities && 
-                selectedSpec.abilities.filter(ability => ability.lockedToSpec === "FALSE")
-                .map(ability => <ModernActionSlot selected={abilityIDs.includes(ability.id)} ability={ability} key={ability.id} onClick={() => selectAbility(ability)}/>)}
+                selectedSpec.abilities.filter(ability => !ability.lockedToSpec)
+                .map(ability => <ActionSlot selected={abilityIDs.includes(ability.id)} ability={ability} key={ability.id} onClick={() => selectAbility(ability)}/>)}
             </div>
         </div>
     )

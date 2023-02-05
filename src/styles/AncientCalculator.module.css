@@ -13,33 +13,3 @@
     border: 1px solid gray;
     border-radius: 10px;
 }
-
-.talent-button {
-    height: 70px;
-    width: 210px;
-    margin: 10px;
-    background-color: #202020;
-    color: white;
-    border: none;
-    outline: 1px solid gray;
-    border-radius: 10px;
-    cursor: pointer;
-    justify-self: center;
-    position: relative;
-}
-
-.selected {
-    outline: 2px solid gold;
-}
-
-.talent-description {
-    grid-column: span 3;
-    height: 100%;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    background-color: #202020;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px 30px;
-}

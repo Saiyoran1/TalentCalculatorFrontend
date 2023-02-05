@@ -1,4 +1,4 @@
-import AncientTalentButton from './AncientTalentButton.js';
+import ActionSlot from '../Generic/ActionSlot';
 import styles from '../styles/AncientCalculator.module.css';
 
 const AncientTalentRow = ({row, onSelectionChanged}) => {
@@ -13,8 +13,8 @@ const AncientTalentRow = ({row, onSelectionChanged}) => {
     
     return (
         <div className={styles["talent-row"]}>
-            <AncientTalentButton key={row.base.id} talent={row.base} selected={row.selection === -1} onClick={handleSelectTalent}/>
-            {row.talents.map((talent, index) => <AncientTalentButton key={talent.id} talent={talent} selected={row.selection === index} onClick={handleSelectTalent}/>)}
+            <ActionSlot key={row.base.id} ability={row.base} selected={row.selection === -1} onClick={handleSelectTalent}/>
+            {row.talents.map((talent, index) => <ActionSlot key={talent.id} ability={talent} selected={row.selection === index} onClick={() => handleSelectTalent(talent)}/>)}
         </div>
     )
 }

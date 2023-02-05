@@ -1,6 +1,6 @@
 import calculatorStyles from '../styles/Calculator.module.css';
 import SpecSelection from '../Generic/SpecSelection';
-import ModernActionSlot from './ModernActionSlot';
+import ActionSlot from '../Generic/ActionSlot';
 import styles from '../styles/ModernCalculator.module.css';
 import { fetchDataForSpec } from '../Generic/FrontEndDataFetching';
 import ModernAbilityPool from './ModernAbilityPool';
@@ -26,7 +26,7 @@ function ModernCalculator({ specs, build, setBuild }) {
             spec: { ...spec },
             weapon: {},
             abilities: {
-                locked: abilityData.abilities.filter(ability => ability.lockedToSpec === "TRUE"),
+                locked: abilityData.abilities.filter(ability => ability.lockedToSpec),
                 free: new Map()
             },
             passives: [...abilityData.passives]
@@ -42,19 +42,19 @@ function ModernCalculator({ specs, build, setBuild }) {
         newBuild.abilities.free.set(selectedSlot, ability);
         setBuild(newBuild);
     }
-
+    
     return (
         <div className={calculatorStyles.calculator}>
             <h2 className={calculatorStyles["calculator-header"]}>Select a Modern Specialization:</h2>
             <SpecSelection specs={specs} selectSpec={handleUpdateSpec} selectedSpec={build ? build.spec : null} passives={build ? build.passives : []} />
             {build && build.spec && build.spec.id && <div className={styles["talent-box"]}>
                 <div className={styles["build-box"]}>
-                    <ModernActionSlot ability={build.weapon} />
-                    <ModernActionSlot ability={build.abilities.locked[0]} />
-                    <ModernActionSlot ability={build.abilities.locked[1]} />
-                    <ModernActionSlot selected={selectedSlot === 0} ability={build.abilities.free.get(0)} onClick={() => setSelectedSlot(0)}/>
-                    <ModernActionSlot selected={selectedSlot === 1} ability={build.abilities.free.get(1)} onClick={() => setSelectedSlot(1)}/>
-                    <ModernActionSlot selected={selectedSlot === 2} ability={build.abilities.free.get(2)} onClick={() => setSelectedSlot(2)}/>
+                    <ActionSlot ability={build.weapon} />
+                    <ActionSlot ability={build.abilities.locked[0]} />
+                    <ActionSlot ability={build.abilities.locked[1]} />
+                    <ActionSlot selected={selectedSlot === 0} ability={build.abilities.free.get(0)} onClick={() => setSelectedSlot(0)}/>
+                    <ActionSlot selected={selectedSlot === 1} ability={build.abilities.free.get(1)} onClick={() => setSelectedSlot(1)}/>
+                    <ActionSlot selected={selectedSlot === 2} ability={build.abilities.free.get(2)} onClick={() => setSelectedSlot(2)}/>
                 </div>
                 <ModernAbilityPool specs={specs} selectedAbilities={Array.from(build.abilities.free.values())} selectAbility={handleSelectAbility}/>
             </div>}
