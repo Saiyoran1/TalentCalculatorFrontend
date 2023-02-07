@@ -1,11 +1,17 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import { fetchDataForSpec } from '../Generic/FrontEndDataFetching';
 import SpecSelectButton from '../Generic/SpecSelectButton';
 import ActionSlot from '../Generic/ActionSlot';
 import styles from '../styles/ModernCalculator.module.css';
 
 function ModernAbilityPool({specs, selectedAbilities, selectAbility}) {
-    const [selectedSpec, setSelectedSpec] = useState(specs[0]);
+    const [selectedSpec, setSelectedSpec] = useState({});
+
+    useEffect(() => {
+        if (specs && specs.length > 0) {
+            handleSpecUpdate(specs[0]);
+        }
+    }, [])
 
     const handleSpecUpdate = (newSpec) => {
         if (selectedSpec && selectedSpec.id === newSpec.id) {

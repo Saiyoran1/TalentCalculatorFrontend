@@ -4,6 +4,7 @@ import ModernCalculator from './Modern/ModernCalculator.js';
 import styles from './styles/App.module.css';
 import { useEffect, useState } from 'react';
 import { fetchSpecs } from './Generic/FrontEndDataFetching.js';
+import SaveBuildForm from './Generic/SaveBuildForm.js';
 
 function App() {
 
@@ -32,6 +33,7 @@ function App() {
       <AncientCalculator specs={specs.filter(spec => spec.plane === "Ancient")} build={ancientBuild} setBuild={setAncientBuild} />
       <ModernCalculator specs={specs.filter(spec => spec.plane === "Modern")} build={modernBuild} setBuild={setModernBuild} />
       <Analyzer modernBuild={modernBuild} ancientBuild={ancientBuild} />
+      <SaveBuildForm ancientBuild={ancientBuild} modernBuild={modernBuild} />
     </div>
   );
 }
